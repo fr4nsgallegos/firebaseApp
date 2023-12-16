@@ -6,6 +6,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     CollectionReference usersReference =
         FirebaseFirestore.instance.collection('USERS');
+    print(usersReference);
+    usersReference.get().then((value) {
+      QuerySnapshot userCollection = value;
+      List<QueryDocumentSnapshot> docs = userCollection.docs;
+      docs.forEach((element) {
+        print(element.id);
+        print(element.data());
+      });
+    });
+
+    // print(usersReference.);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
