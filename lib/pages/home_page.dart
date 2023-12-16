@@ -5,7 +5,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: const Text(
+            "FirebaseApp",
+          ),
+          centerTitle: true,
+        ),
         body: Column(),
       ),
     );
