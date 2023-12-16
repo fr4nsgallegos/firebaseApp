@@ -29,7 +29,52 @@ class HomePage extends StatelessWidget {
                   });
                 },
                 child: Text("Obtener data"),
-              )
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  usersReference.add({
+                    'name': 'Roberto',
+                    'lastname': 'Rodriguez',
+                    'age': 45,
+                    'favoriteColor': 'red'
+                  }).then((value) {
+                    print(value.id);
+                  });
+                },
+                child: Text("Inserción"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  usersReference.doc('tom').set({
+                    'name': 'Anita',
+                    'lastName': 'Mengoa',
+                    'hijos': 6,
+                  }).then((value) {});
+                },
+                child: Text("Inserción 2"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  usersReference.doc('tom').update({
+                    // "name": 'update',
+                    // "lastaName": "update",
+                    'hijos': 7,
+                  });
+                },
+                child: Text("Actualizar"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  usersReference
+                      .doc("tom")
+                      .delete()
+                      .then((value) {})
+                      .catchError((error) {
+                    print(error);
+                  });
+                },
+                child: Text("Eliminar"),
+              ),
             ],
           ),
         ),
